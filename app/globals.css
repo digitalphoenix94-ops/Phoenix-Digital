@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* Brand tokens. Change a colour here and it updates across the site. */
+@theme {
+  --color-night: #0b0a09; /* page background */
+  --color-surface: #141210;
+  --color-raised: #1b1714;
+  --color-line: #2b2520;
+
+  --color-ink: #f4f0ea; /* body text */
+  --color-muted: #a69c91;
+  --color-faint: #6f665d; /* decorative only: too low-contrast for small text */
+
+  --color-ember: #ff8a1f;
+  --color-gold: #f6c14b;
+  --color-ember-deep: #3a1d0a;
+
+  /* The Common sub-brand */
+  --color-leaf: #9cc27e;
+  --color-leaf-deep: #18230f;
+  --color-bronze: #c9a063;
+
+  --font-display: var(--font-archivo), "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-night);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-night);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: var(--color-ember);
+    color: var(--color-night);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .wrap { padding-inline: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .wrap { padding-inline: 2.5rem; }
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ember);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* The one signature motion moment: a slow ember glow breathing behind the hero logo. */
+  .ember-glow {
+    background: radial-gradient(closest-side, rgb(255 138 31 / 0.34), rgb(255 138 31 / 0.12) 45%, rgb(246 193 75 / 0.04) 70%, transparent);
+    animation: ember-breathe 7s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+  @keyframes ember-breathe {
+    0%, 100% { opacity: 0.6; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.06); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ember-glow { animation: none; opacity: 0.8; transform: none; }
+  }
+
+  .placeholder-slot {
+    background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgb(43 37 32 / 0.55) 14px 15px);
+  }
+}

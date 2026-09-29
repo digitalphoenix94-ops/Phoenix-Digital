@@ -1,0 +1,31 @@
+{
+  "name": "phoenix-digital",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Phoenix Digital website: integrated marketing agency, Nairobi, Kenya.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out -l 3000",
+    "typecheck": "tsc --noEmit",
+    "brand": "node scripts/process-brand.mjs"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "next": "^16.3.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "postcss": "^8.5.28",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
+}
